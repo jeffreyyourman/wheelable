@@ -4,9 +4,16 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise
 const db = mongoose.connection;
+const Location = require('./models/Location.js');
+const User = require('./models/User.js');
 
-mongoose.connect("mongodb://localhost/wheelable");
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(`mongodb://localhost/wheelable`);
+}
 
 db.on("error", (error) => {
   console.log(`Mongoose Error: ${error}`);
@@ -14,6 +21,11 @@ db.on("error", (error) => {
 
 db.once("open", () => {
   console.log(`Mongoose connection successful.`);
+  var foo = new User({name: "Craig"})
+  var bar = new User({name: "Jon"})
+  User.insertMany([foo, bar], (res) => {
+    console.log(res)
+  })
 });
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
