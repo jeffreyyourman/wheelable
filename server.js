@@ -21,11 +21,11 @@ db.on("error", (error) => {
 
 db.once("open", () => {
   console.log(`Mongoose connection successful.`);
-  var foo = new User({name: "Craig"})
-  var bar = new User({name: "Jon"})
-  User.insertMany([foo, bar], (res) => {
-    console.log(res)
-  })
+  //var foo = new User({name: "Craig"})
+  //var bar = new User({name: "Jon"})
+  //User.insertMany([foo, bar], (res) => {
+  // console.log(res)
+  //})
 });
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
