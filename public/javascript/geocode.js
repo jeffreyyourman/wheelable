@@ -152,5 +152,7 @@ $(document).on('click', '.esri-search__submit-button', function() {
     }).done(function(data) {
       console.log('hi')
       console.log(data)
+      $('.esri-popup__main-container').empty();
+      $('.esri-popup__main-container').append(`<h1>${data.address}</h1>`)
     })
 })
