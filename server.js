@@ -38,6 +38,10 @@ app.get('/', (req, res) => {
     res.render('home', {foo: 'Hi'});
 });
 
+app.get('/search', (req, res) => {
+    res.render('pagetwo', {foo: 'Hi'});
+});
+
 app.get('/form', (req, res) => {
   res.render('form')
 })
