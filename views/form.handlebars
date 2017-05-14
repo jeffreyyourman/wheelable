@@ -1,4 +1,4 @@
-<form class="" action="/companyInfo" method="post">
+  <form class="" action="/companyInfo" method="post">
   <div class="form-group">
     <label for="usr">Name of destination:</label>
     <input placeholder='Business: Club, Bar, restaurant, etc' type="text" class="form-control" id="usr">
@@ -7,22 +7,42 @@
     <label for="usr">Address:</label>
     <input placeholder='company address' type="text" class="form-control" id="usr">
   </div>
-  <div class="radio accessible ">
-    <label><input type="checkbox" name="AccessibleRadio">Accessible</label>
+  <div class="accessibility">
+    <div class="radio accessible ">
+      <label><input id='accessibleradio' type="radio" value="" name="AccessibleRadio">Accessible</label>
+    </div>
   </div>
   <div class="accessibleAdditions">
     <div class="radio accessibleElevator ">
-      <label><input type="checkbox" name="elevatorRadio">Elevator</label>
+      <label><input type="checkbox" value="" name="elevatorRadio">Elevator</label>
     </div>
     <div class="radio accessibleRamp ">
-      <label><input type="checkbox" name="rampRadio">Ramp</label>
+      <label><input type="checkbox" value="" name="rampRadio">Ramp</label>
     </div>
     <div class="radio accessibleStairs ">
-      <label><input type="checkbox" name="stairsRadio">Stairs</label>
+      <label><input type="checkbox" value="" name="stairsRadio">Stairs</label>
     </div>
+  </div>
+  <div class="radio notaccessible ">
+    <label><input id='notaccessibleradio' type="radio" value="" name="AccessibleRadio">Not Accessible</label>
+  </div>
   <div class="form-group">
     <label for="usr">Reason:</label>
     <textarea placeholder='Why is this company accessible or not accessible' class="form-control" rows="5" id="comment"></textarea>
   </div>
-  <input type="submit" class="btn btn-info" value="Submit Button">
+  <input type="submit" class="btn btn-info submitBtn" value="Submit Button">
 </form>
+
+
+<script type="text/javascript">
+// if accessibleradio == checked or true
+  // show $('.accessibleAdditions').show()
+    // else $('.accessibleAdditions').hide()
+    $('.accessibleAdditions').hide()
+    $('#accessibleradio').on('click', function(event) {
+      $('.accessibleAdditions').show()
+    });
+    $('#notaccessibleradio').on('click', function(event) {
+      $('.accessibleAdditions').hide()
+    });
+</script>
