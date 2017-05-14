@@ -11,7 +11,7 @@ module.exports = (function() {
   let tText = req.query.text;
   handleWebhook(req.query, res);
 
-  let monkey = "`${tText}` This location is Accessable! :D"
+  let monkey = `${tText} This location is Accessable! :D`;
 
   var data = JSON.stringify({
    api_key: 'c492b266',
