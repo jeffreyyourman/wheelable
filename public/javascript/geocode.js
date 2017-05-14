@@ -124,7 +124,7 @@ var graphicsLayer = new GraphicsLayer();
       graphicsLayer.add(pointGraphic);
 })
 }
-$(document).on('click', '.esri-search__input', function() {
+$(document).on('click', '.esri-search__submit-button', function() {
   var querySearch = $('input').val()
   console.log(querySearch);
   console.log(`${window.location.origin}/location/${querySearch}`)
