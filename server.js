@@ -36,18 +36,19 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
-app.get('/search', (req, res) => {
-    res.render('pagetwo');
-});
-
 app.get('/location/:address', (req, res) => {
   const addressQuery = req.params.address.toLowerCase().trim();
-
   Location.findOne({ address: addressQuery }, (err, data) => {
-      if (err) {
-        console.log(err);
-      }
-    res.json(data)
+    if (err) {
+      console.log(err);
+    }
+
+    if (!data) {
+      res.json(null)
+    } else {
+      res.json(data)
+    }
+
     });
 })
 
@@ -75,6 +76,10 @@ app.get('/map', (req, res) => {
 })
 
 app.use('/sms', sms);
+
+app.use('/*', (req, res) => {
+  res.redirect('/map');
+})
 
 app.listen(PORT, () => {
     console.log(PORT)

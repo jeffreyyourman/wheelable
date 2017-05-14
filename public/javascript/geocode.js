@@ -6,6 +6,8 @@ var UniqueID = PubNub.generateUUID();
   // Subscribe to the demo_tutorial channel
   pubnubDemo.addListener({
       message: function(message){
+        console.log('message', message.message.uniqueid)
+        console.log('UniqueID', UniqueID)
         if (UniqueID === message.message.uniqueid) {
           let { Place_addr } = message.message.geocode.candidates[0].attributes;
           let { x, y } = message.message.geocode.candidates[0].location;
@@ -135,18 +137,21 @@ $(document).on('click', '.esri-search__submit-button', function() {
       popupCompany.empty();
       if (data) {
         if (data.accessibleFriendly) {
-          popupCompany.append("<p>This is accessible</p><br>")
+          popupCompany.append("<h2>This is accessible</h2><br>")
         }
         if (data.accessibleElevator) {
-          popupCompany.append("<p>Elevator Entrance</p><br>")
+          popupCompany.append("<h3>Elevator Entrance</h3>")
+          popupCompany.append('<img src = "/assets/img/elevator.png" style ="height:60px; width:60px">')
         }
         if (data.accessibleRamp) {
           // popupCompany.append(`<p>${data.accessibleRamp}</p><br>`)
-          popupCompany.append("<p>Ramp Entrance</p><br>")
+          popupCompany.append("<h3>Ramp Entrance</h3>")
+          popupCompany.append('<img src = "/assets/img/ramp.png" style ="height:60px; width:60px">')
         }
         if (data.accessibleStairs) {
-          // popupCompany.append(`<p>${data.accessibleStairs}</p><br>`)
-          popupCompany.append("<p>This has very little stairs</p><br>")
+          // popupCompany.append(`<h3>${data.accessibleStairs}</h3><br>`)
+          popupCompany.append("<h3>This has very little stairs</h3>")
+          popupCompany.append('<img src = "/assets/img/escalator.png" style ="height:60px; width:60px">')
         }
         if (data.reason) {
           popupCompany.append(`<p>${data.reason}</p><br>`)
@@ -154,7 +159,8 @@ $(document).on('click', '.esri-search__submit-button', function() {
       } else {
         $('.question').html("<p>No Data</p><br>")
         $('.info').html("<p><a href='/form'>Add Info</a></p>")
-        popupCompany.append('<h1>Entry doesnt exist</h1>')
+
+        popupCompany.append('<h2 style = "text-align: center">Entry doesnt exist</h2> </br><h4 style = "text-align: center">Help us by adding details about this location</h4>')
       }
     })
 })
