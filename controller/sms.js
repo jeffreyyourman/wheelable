@@ -16,10 +16,12 @@ module.exports = (function() {
   console.log('error:', error); // Print the error if one occurred 
   console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
   console.log('body:', body); // Print the HTML for the Google homepage. 
-});
 
-  let monkey = "Thank you for your response!"
-
+  if (body.accessibleFriendly){
+  var monkey = "This location is Accessable"
+} else {
+  var monkey = "This location is not accessable"
+}
   var data = JSON.stringify({
    api_key: 'c492b266',
    api_secret: '9bc16bd976d0f158',
@@ -56,7 +58,7 @@ module.exports = (function() {
   });
 
   });
-
+});
       return router;
 })();
 

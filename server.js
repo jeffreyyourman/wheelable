@@ -12,19 +12,19 @@ const Location = require('./models/Location.js');
 const User = require('./models/User.js');
 const sms = require('./controller/sms');
 
-if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-  mongoose.connect(`mongodb://localhost/wheelable`);
-}
+// if (process.env.MONGODB_URI) {
+//   mongoose.connect(process.env.MONGODB_URI);
+// } else {
+//   mongoose.connect(`mongodb://localhost/wheelable`);
+// }
 
-db.on("error", (error) => {
-  console.log(`Mongoose Error: ${error}`);
-});
+// db.on("error", (error) => {
+//   console.log(`Mongoose Error: ${error}`);
+// });
 
-db.once("open", () => {
-  console.log(`Mongoose connection successful.`);
-});
+// db.once("open", () => {
+//   console.log(`Mongoose connection successful.`);
+// });
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
