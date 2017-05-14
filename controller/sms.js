@@ -10,8 +10,8 @@ module.exports = (function() {
   let tNumber = req.query.msisdn;
   let tText = req.query.text;
   handleWebhook(req.query, res);
-   
-  let monkey = "Fuck you!?"
+
+  let monkey = "Thank you for your response!"
 
   var data = JSON.stringify({
    api_key: 'c492b266',
