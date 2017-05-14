@@ -54,7 +54,9 @@ app.get('/location/:address', (req, res) => {
 
 app.post('/companyInfo', (req, res) => {
   const resObj = req.body
+  console.log(resObj)
   const newLocation = new Location(resObj)
+  console.log(newLocation);
   newLocation.save( err => {
     if (err) {
       console.log(err);
