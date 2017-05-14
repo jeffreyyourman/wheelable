@@ -6,22 +6,30 @@ var pubnubDemo = new PubNub({
   pubnubDemo.addListener({
       message: function(message){
           let { Place_addr } = message.message.geocode.candidates[0].attributes;
-          let { x, y } = message.message.geocode.candidates[0].location
-          console.log(x)
-          console.log(y)
-          console.log(Place_addr)
+          let { x, y } = message.message.geocode.candidates[0].location;
           mapFunctionDisplay(x, y, Place_addr)
       }
   })
   pubnubDemo.subscribe({
       channels: ['esri_geocode_input']
   });
+
+  var address = window.location.pathname.split('/')[2]
+
+  if (address == undefined) {
+    address = "299 South St, New York, NY 10002";
+  }  else {
+    address.replace(/%20/g, ' ');
+    }
    pubnubDemo.publish({
+
       message: {
-           "text": "toysrus paramus, nj"
+           "text": address
       },
       channel: 'esri_geocode_input'
   });
+
+
 function mapFunctionDisplay(x, y, add) {
 // body...
 require([
@@ -37,7 +45,7 @@ require([
 ], function(Map, MapView, Search, FeatureLayer, Graphic, GraphicsLayer, Point, SimpleMarkerSymbol) {
 
 var map = new Map({
-  basemap: "streets-vector"
+  basemap: "dark-gray-vector"
 });
 
 // Add the layer to the map

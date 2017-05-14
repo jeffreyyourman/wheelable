@@ -12,37 +12,21 @@ const Location = require('./models/Location.js');
 const User = require('./models/User.js');
 const sms = require('./controller/sms');
 
-if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-  mongoose.connect(`mongodb://localhost/wheelable`);
-}
 
-db.on("error", (error) => {
-  console.log(`Mongoose Error: ${error}`);
-});
 
-db.once("open", () => {
-  console.log(`Mongoose connection successful.`);
-  //var foo = new Location({
-  //  name: "Fuck off",
-  //  address: "840 River Rd, Edgewater NJ",
-  //  accessibleFriendly: false,
-  //  reason: "No clue"
-  //})
-
-  //var bar = new Location({
-  //  name: "Fuck off",
-  //  address: "840 River Rd, Edgewater NJ",
-  //  accessibleFriendly: false,
-  //  reason: "No clue"
-  //})
-
-  //Location.insertMany([foo, bar], (res) => {
-  //  console.log(res)
-  //})
-
-});
+// if (process.env.MONGODB_URI) {
+//   mongoose.connect(process.env.MONGODB_URI);
+// } else {
+//   mongoose.connect(`mongodb://localhost/wheelable`);
+// }
+//
+// db.on("error", (error) => {
+//   console.log(`Mongoose Error: ${error}`);
+// });
+//
+// db.once("open", () => {
+//   console.log(`Mongoose connection successful.`);
+// });
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
