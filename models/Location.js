@@ -3,12 +3,15 @@ const Schema = mongoose.Schema;
 
 const LocationSchema = new Schema({
   name: { type: String },
-  address: { type: String}, 
+  address: { type: String},
   accessibleFriendly: Boolean,
+  accessibleElevator: Boolean,
+  accessibleRamp: Boolean,
+  accessibleStairs: Boolean,
   reason: { type: String }
 });
+
 
 const Location = mongoose.model("Location", LocationSchema);
 
 module.exports = Location;
-
