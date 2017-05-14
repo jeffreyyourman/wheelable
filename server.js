@@ -12,11 +12,6 @@ const Location = require('./models/Location.js');
 const User = require('./models/User.js');
 const sms = require('./controller/sms');
 
-if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-  mongoose.connect(`mongodb://localhost/wheelable`);
-}
 
 db.on("error", (error) => {
   console.log(`Mongoose Error: ${error}`);
