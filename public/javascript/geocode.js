@@ -124,7 +124,7 @@ var graphicsLayer = new GraphicsLayer();
       graphicsLayer.add(pointGraphic);
 })
 }
-$(document).on('click', '.esri-search__submit-button', function() {
+$(document).on('click', '.esri-search__input', function() {
   var querySearch = $('input').val()
   console.log(querySearch);
   console.log(`${window.location.origin}/location/${querySearch}`)
@@ -154,7 +154,7 @@ $(document).on('click', '.esri-search__submit-button', function() {
           popupCompany.append('<img src = "/assets/img/escalator.png" style ="height:60px; width:60px">')
         }
         if (data.reason) {
-          popupCompany.append(`<p>${data.reason}</p><br>`)
+          popupCompany.append(`<p>${data.reason}</p><br>`) 
         }
       } else {
         $('.question').html("<p>No Data</p><br>")
