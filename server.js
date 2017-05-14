@@ -61,6 +61,10 @@ app.get('/form', (req, res) => {
   res.render('form')
 })
 
+app.get('/formUpdate', (req, res) => {
+  res.render('formUpdate')
+})
+
 app.get('/map', (req, res) => {
   res.render('map')
 })
