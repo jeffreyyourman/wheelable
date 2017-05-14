@@ -2,12 +2,19 @@ var pubnubDemo = new PubNub({
     publishKey: 'pub-c-553420fa-6c08-49b4-b282-30ff5d9b34a3',
     subscribeKey: 'sub-c-8e5ada48-3805-11e7-a268-0619f8945a4f'
 });
+var UniqueID = PubNub.generateUUID();
+
   // Subscribe to the demo_tutorial channel
   pubnubDemo.addListener({
       message: function(message){
+        if (UniqueID === message.message.uniqueid) {
           let { Place_addr } = message.message.geocode.candidates[0].attributes;
           let { x, y } = message.message.geocode.candidates[0].location;
           mapFunctionDisplay(x, y, Place_addr)
+        } else {
+          console.log('flower.');
+        }
+
       }
   })
   pubnubDemo.subscribe({
@@ -24,11 +31,12 @@ var pubnubDemo = new PubNub({
    pubnubDemo.publish({
 
       message: {
-           "text": address
+           "text": address,
+           "uniqueid":UniqueID
       },
       channel: 'esri_geocode_input'
   });
-
+// if my userid = uuid
 
 function mapFunctionDisplay(x, y, add) {
 // body...
