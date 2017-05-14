@@ -163,7 +163,7 @@ $(document).on('click', '.esri-search__submit-button', function() {
         }
         if (data.accessibleElevator) {
           popupCompany.append("<p>Elevator Entrance</p><br>")
-          popupCompany.append('<img src = "../assets/img/elevator.png">')
+          popupCompany.append('<img src = "/assets/img/elevator.png">')
         }
         if (data.accessibleRamp) {
           // popupCompany.append(`<p>${data.accessibleRamp}</p><br>`)
