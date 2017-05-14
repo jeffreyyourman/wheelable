@@ -14,19 +14,19 @@ const sms = require('./controller/sms');
 
 
 
-// if (process.env.MONGODB_URI) {
-//   mongoose.connect(process.env.MONGODB_URI);
-// } else {
-//   mongoose.connect(`mongodb://localhost/wheelable`);
-// }
-//
-// db.on("error", (error) => {
-//   console.log(`Mongoose Error: ${error}`);
-// });
-//
-// db.once("open", () => {
-//   console.log(`Mongoose connection successful.`);
-// });
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(`mongodb://localhost/wheelable`);
+}
+
+db.on("error", (error) => {
+  console.log(`Mongoose Error: ${error}`);
+});
+
+db.once("open", () => {
+  console.log(`Mongoose connection successful.`);
+});
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -38,6 +38,11 @@ app.get('/', (req, res) => {
     res.render('home', {foo: 'Hi'});
 });
 
+
+app.get('/search', (req, res) => {
+    res.render('pagetwo', {foo: 'Hi'});
+});
+
 app.get('/location/:address', (req, res) => {
   const address = req.params.address;
   console.log('address', address)
@@ -47,6 +52,7 @@ app.get('/location/:address', (req, res) => {
     res.render('map', data);
   })
 })
+
 
 app.get('/form', (req, res) => {
   res.render('form')
