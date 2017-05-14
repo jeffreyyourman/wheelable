@@ -38,7 +38,7 @@ app.get('/', (req, res) => {
 
 
 app.get('/search', (req, res) => {
-    res.render('pagetwo', {foo: 'Hi'});
+    res.render('pagetwo');
 });
 
 app.get('/location/:address', (req, res) => {
