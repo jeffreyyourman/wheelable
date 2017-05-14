@@ -164,6 +164,5 @@ $(document).on('click', '.esri-search__submit-button', function() {
       } else {
         popupCompany.append('<h1>Entry doesnt exist</h1>')
       }
-
     })
 })
