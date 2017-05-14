@@ -7,6 +7,8 @@ var UniqueID = PubNub.generateUUID();
   // Subscribe to the demo_tutorial channel
   pubnubDemo.addListener({
       message: function(message){
+        console.log('message', message)
+        console.log('UniqueID', UniqueID)
         if (UniqueID === message.message.uniqueid) {
           let { Place_addr } = message.message.geocode.candidates[0].attributes;
           let { x, y } = message.message.geocode.candidates[0].location;
