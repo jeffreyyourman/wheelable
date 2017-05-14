@@ -36,7 +36,6 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
-
 app.get('/search', (req, res) => {
     res.render('pagetwo');
 });
@@ -63,9 +62,12 @@ app.post('/companyInfo', (req, res) => {
   })
 })
 
-
 app.get('/form', (req, res) => {
   res.render('form')
+})
+
+app.get('/formUpdate', (req, res) => {
+  res.render('formUpdate')
 })
 
 app.get('/map', (req, res) => {
