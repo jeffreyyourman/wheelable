@@ -162,17 +162,17 @@ $(document).on('click', '.esri-search__submit-button', function() {
           popupCompany.append("<h2>This is accessible</h2><br>")
         }
         if (data.accessibleElevator) {
-          popupCompany.append("<p>Elevator Entrance</p><br>")
+          popupCompany.append("<h3>Elevator Entrance</h3>")
           popupCompany.append('<img src = "/assets/img/elevator.png" style ="height:60px; width:60px">')
         }
         if (data.accessibleRamp) {
           // popupCompany.append(`<p>${data.accessibleRamp}</p><br>`)
-          popupCompany.append("<p>Ramp Entrance</p><br>")
+          popupCompany.append("<h3>Ramp Entrance</h3>")
           popupCompany.append('<img src = "/assets/img/ramp.png" style ="height:60px; width:60px">')
         }
         if (data.accessibleStairs) {
-          // popupCompany.append(`<p>${data.accessibleStairs}</p><br>`)
-          popupCompany.append("<p>This has very little stairs</p><br>")
+          // popupCompany.append(`<h3>${data.accessibleStairs}</h3><br>`)
+          popupCompany.append("<h3>This has very little stairs</h3>")
           popupCompany.append('<img src = "/assets/img/escalator.png" style ="height:60px; width:60px">')
         }
         if (data.reason) {
@@ -180,7 +180,7 @@ $(document).on('click', '.esri-search__submit-button', function() {
         }
 
       } else {
-        popupCompany.append('<h2 style = "text-align: center">Entry doesnt exist</h2> </br><h4>Help us by adding details about this location</h4>')
+        popupCompany.append('<h2 style = "text-align: center">Entry doesnt exist</h2> </br><h4 style = "text-align: center">Help us by adding details about this location</h4>')
       }
     })
 })
