@@ -24,24 +24,6 @@ db.on("error", (error) => {
 
 db.once("open", () => {
   console.log(`Mongoose connection successful.`);
-  //var foo = new Location({
-  //  name: "Fuck off",
-  //  address: "840 River Rd, Edgewater NJ",
-  //  accessibleFriendly: false,
-  //  reason: "No clue"
-  //})
-
-  //var bar = new Location({
-  //  name: "Fuck off",
-  //  address: "840 River Rd, Edgewater NJ",
-  //  accessibleFriendly: false,
-  //  reason: "No clue"
-  //})
-
-  //Location.insertMany([foo, bar], (res) => {
-  //  console.log(res)
-  //})
-
 });
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
@@ -56,7 +38,6 @@ app.get('/', (req, res) => {
 
 app.get('/location/:address', (req, res) => {
   const address = req.params.address;
-  console.log('address', address)
 
   Location.findOne({ 'address': address }, (err, data) => {
     if (err) return handleError(err);
