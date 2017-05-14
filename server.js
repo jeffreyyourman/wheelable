@@ -60,6 +60,7 @@ app.post('/companyInfo', (req, res) => {
       console.log(err);
     }
     console.log(`list saved!`)
+    res.redirect('/map')
   })
 })
 
