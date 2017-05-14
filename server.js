@@ -36,6 +36,13 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
+var dummy = require('./dummy.json');
+Location.insertMany(dummy).then( (data) => {
+  console.log('saved')
+}).catch( err => {
+  throw err
+})
+
 app.get('/search', (req, res) => {
     res.render('pagetwo');
 });
