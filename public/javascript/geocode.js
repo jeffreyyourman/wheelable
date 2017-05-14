@@ -9,7 +9,7 @@ var UniqueID = PubNub.generateUUID();
       message: function(message){
         console.log('message', message)
         console.log('UniqueID', UniqueID)
-        if (UniqueID === message.message.uniqueid) {
+        if (UniqueID !== message.message.uniqueid) {
           let { Place_addr } = message.message.geocode.candidates[0].attributes;
           let { x, y } = message.message.geocode.candidates[0].location;
           mapFunctionDisplay(x, y, Place_addr)
