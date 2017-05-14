@@ -159,19 +159,21 @@ $(document).on('click', '.esri-search__submit-button', function() {
 
       if (data) {
         if (data.accessibleFriendly) {
-          popupCompany.append("<p>This is accessible</p><br>")
+          popupCompany.append("<h2>This is accessible</h2><br>")
         }
         if (data.accessibleElevator) {
           popupCompany.append("<p>Elevator Entrance</p><br>")
-          popupCompany.append('<img src = "/assets/img/elevator.png">')
+          popupCompany.append('<img src = "/assets/img/elevator.png" style ="height:20px; width:20px">')
         }
         if (data.accessibleRamp) {
           // popupCompany.append(`<p>${data.accessibleRamp}</p><br>`)
           popupCompany.append("<p>Ramp Entrance</p><br>")
+          popupCompany.append('<img src = "/assets/img/ramp.png" style ="height:20px; width:20px">')
         }
         if (data.accessibleStairs) {
           // popupCompany.append(`<p>${data.accessibleStairs}</p><br>`)
           popupCompany.append("<p>This has very little stairs</p><br>")
+          popupCompany.append('<img src = "/assets/img/escalator.png" style ="height:20px; width:20px">')
         }
         if (data.reason) {
           popupCompany.append(`<p>${data.reason}</p><br>`)
