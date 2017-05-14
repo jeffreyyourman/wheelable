@@ -3,7 +3,6 @@
     padding: 0;
     margin: 0;
     height: 94.5%;
-    
     width: 100%;
   }nav{
 		background-color: #60AAF1 !important;
@@ -16,15 +15,20 @@
 	background-color: #60AAF1;
 	padding: 20px;
 	padding-left: 40px;
+  color: white;
+
   }.hg2{
   	font-size: 50px;
   	border:solid white;
   	height: 100%;
   	width: 70%;
   	float: right;
+    opacity: 0.8;
+    color: darkgrey;
+
   }footer{
-  	height: 100%
-  	max-height:100px;
+  	height: 100%;
+  	max-height:200px;
   }
 </style>
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
@@ -55,9 +59,25 @@
 
 <footer class="footer">
 <div class="hg1">
-<p><i class="fa fa-plus" aria-hidden="true"></i> ADD Review</p>
+<p class="info"></p>
 </div>
-<div class="hg2">
 
+<div class="hg2">
+<p class="question">No Data</p>
 </div>
 </footer>
+
+
+<script type="text/javascript">
+        $('.accessibleAdditions').hide()
+        $('#accessibleradio').on('click', function(event) {
+            $('.accessibleAdditions').show()
+        });
+        $('#notaccessibleradio').on('click', function(event) {
+            $('.accessibleAdditions').hide()
+        });
+</script>
+
+
+
+

@@ -3,7 +3,6 @@ var pubnubDemo = new PubNub({
     subscribeKey: 'sub-c-8e5ada48-3805-11e7-a268-0619f8945a4f'
 });
 var UniqueID = PubNub.generateUUID();
-
   // Subscribe to the demo_tutorial channel
   pubnubDemo.addListener({
       message: function(message){
@@ -19,16 +18,13 @@ var UniqueID = PubNub.generateUUID();
   pubnubDemo.subscribe({
       channels: ['esri_geocode_input']
   });
-
   var address = window.location.pathname.split('/')[2]
-
   if (address == undefined) {
     address = "299 South St, New York, NY 10002";
   }  else {
     address.replace(/%20/g, ' ');
     }
    pubnubDemo.publish({
-
       message: {
            "text": address,
            "uniqueid":UniqueID
@@ -36,7 +32,6 @@ var UniqueID = PubNub.generateUUID();
       channel: 'esri_geocode_input'
   });
 // if my userid = uuid
-
 function mapFunctionDisplay(x, y, add) {
 // body...
 require([
@@ -50,27 +45,21 @@ require([
 "esri/symbols/SimpleMarkerSymbol",
 "dojo/domReady!"
 ], function(Map, MapView, Search, FeatureLayer, Graphic, GraphicsLayer, Point, SimpleMarkerSymbol) {
-
 var map = new Map({
   basemap: "dark-gray-vector"
 });
-
 // Add the layer to the map
 var trailsLayer = new FeatureLayer({
   url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0",
 });
-
 //map.add(trailsLayer); // Optionally add layer to map
-
 var view = new MapView({
   container: "viewDiv",
   map: map,
   center: [x, y],
   zoom: 9
 });
-
 // Search
-
 var search = new Search({
   view: view
 });
@@ -87,9 +76,7 @@ search.sources.push({
   name: "Trailheads",
   placeholder: "Santa",
 });
-
 // Find address
-
 function showPopup(address, pt) {
   view.popup.open({
     title: "Find Address Result",
@@ -97,7 +84,6 @@ function showPopup(address, pt) {
     location: pt
   });
 }
-
 view.on("click", function(evt){
   search.clear();
   view.popup.clear();
@@ -114,35 +100,28 @@ view.on("click", function(evt){
 });
 var graphicsLayer = new GraphicsLayer();
       map.add(graphicsLayer);
-
       /*************************
        * Add a 3D point graphic
        *************************/
-
       // London
       var point = new Point({
           x: x,
           y: y
         }),
-
         markerSymbol = new SimpleMarkerSymbol({
           color: [226, 119, 40],
-
           outline: { // autocasts as new SimpleLineSymbol()
             color: [255, 255, 255],
             width: 2
           }
         });
-
       var pointGraphic = new Graphic({
         geometry: point,
         symbol: markerSymbol
       });
-
       graphicsLayer.add(pointGraphic);
 })
 }
-
 $(document).on('click', '.esri-search__submit-button', function() {
   var querySearch = $('input').val()
   console.log(querySearch);
@@ -154,7 +133,6 @@ $(document).on('click', '.esri-search__submit-button', function() {
       console.log(data)
       var popupCompany = $('.esri-popup__main-container')
       popupCompany.empty();
-
       if (data) {
         if (data.accessibleFriendly) {
           popupCompany.append("<p>This is accessible</p><br>")
@@ -173,15 +151,13 @@ $(document).on('click', '.esri-search__submit-button', function() {
         if (data.reason) {
           popupCompany.append(`<p>${data.reason}</p><br>`)
         }
-
       } else {
+        $('.question').html("<p>No Data</p><br>")
+        $('.info').html("<p><a href='/form'>Add Info</a></p>")
         popupCompany.append('<h1>Entry doesnt exist</h1>')
       }
     })
 })
-
-
-
 // popupCompany.append(`<h5>${data.name}</h5><br>`)
 // popupCompany.append(`<p>${data.accessibleFriendly}</p><br>`)
 // popupCompany.append(`<p>${data.accessibleElevator}</p><br>`)
