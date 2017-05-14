@@ -44,9 +44,14 @@ app.get('/location/:address', (req, res) => {
   const addressQuery = req.params.address.toLowerCase().trim();
 
   Location.findOne({ address: addressQuery }, (err, data) => {
-      if (err) {
-        console.log(err);
-      }
+    if (err) {
+      console.log(err);
+    }
+
+    if (!data) {
+      res.json(null)
+    }
+
     res.json(data)
     });
 })
