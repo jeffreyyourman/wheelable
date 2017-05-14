@@ -33,12 +33,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-    res.render('home', {foo: 'Hi'});
+    res.render('home');
 });
 
 
 app.get('/search', (req, res) => {
-    res.render('pagetwo', {foo: 'Hi'});
+    res.render('pagetwo');
 });
 
 app.get('/location/:address', (req, res) => {
