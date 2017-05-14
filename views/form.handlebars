@@ -9,35 +9,34 @@
   </div>
   <div class="accessibility">
     <div class="radio accessible ">
-      <label><input id='accessibleradio' type="radio" value="" name="AccessibleRadio">Accessible</label>
+      <label><input id='accessibleradio' type="radio" value="true"
+        name="accessibleFriendly">Accessible</label>
     </div>
   </div>
   <div class="accessibleAdditions">
     <div class="radio accessibleElevator ">
-      <label><input type="checkbox" value="" name="elevatorRadio">Elevator</label>
+      <label><input type="checkbox" value="true" name="elevatorRadio">Elevator</label>
     </div>
     <div class="radio accessibleRamp ">
-      <label><input type="checkbox" value="" name="rampRadio">Ramp</label>
+      <label><input type="checkbox" value="true" name="rampRadio">Ramp</label>
     </div>
     <div class="radio accessibleStairs ">
-      <label><input type="checkbox" value="" name="stairsRadio">Stairs</label>
+      <label><input type="checkbox" value="true" name="stairsRadio">Stairs</label>
     </div>
   </div>
   <div class="radio notaccessible ">
-    <label><input id='notaccessibleradio' type="radio" value="" name="AccessibleRadio">Not Accessible</label>
+    <label><input id='notaccessibleradio' type="radio" value="false"
+      name="accessibleFriendly">Not Accessible</label>
   </div>
   <div class="form-group">
     <label for="usr">Reason:</label>
     <textarea placeholder='Why is this company accessible or not accessible' class="form-control" rows="5" id="comment"></textarea>
   </div>
-  <input type="submit" class="btn btn-info submitBtn" value="Submit Button">
+  <input type="submit" class="btn btn-info submitBtn" value="Submit">
 </form>
 
 
 <script type="text/javascript">
-// if accessibleradio == checked or true
-  // show $('.accessibleAdditions').show()
-    // else $('.accessibleAdditions').hide()
     $('.accessibleAdditions').hide()
     $('#accessibleradio').on('click', function(event) {
       $('.accessibleAdditions').show()

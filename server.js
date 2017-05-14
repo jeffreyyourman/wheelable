@@ -52,6 +52,10 @@ app.get('/location/:address', (req, res) => {
     });
 })
 
+app.post('/companyInfo', (req, res) => {
+  console.log(req.body)
+})
+
 
 app.get('/form', (req, res) => {
   res.render('form')
