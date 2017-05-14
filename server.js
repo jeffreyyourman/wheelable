@@ -12,6 +12,11 @@ const Location = require('./models/Location.js');
 const User = require('./models/User.js');
 const sms = require('./controller/sms');
 
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+} else {
+  mongoose.connect(`mongodb://localhost/wheelable`);
+}
 
 db.on("error", (error) => {
   console.log(`Mongoose Error: ${error}`);
@@ -32,12 +37,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/location/:address', (req, res) => {
-  const address = req.params.address;
+  const addressQuery = req.params.address.toLowerCase().trim();
 
-  Location.findOne({ 'address': address }, (err, data) => {
-    if (err) return handleError(err);
-    res.render('map', data);
-  })
+  Location.findOne({ address: addressQuery }, (err, data) => {
+      if (err) {
+        console.log(err);
+      }
+    res.json(data)
+    });
 })
 
 app.get('/form', (req, res) => {
