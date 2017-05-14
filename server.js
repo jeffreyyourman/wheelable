@@ -26,6 +26,12 @@ db.once("open", () => {
   console.log(`Mongoose connection successful.`);
 });
 
+var dummy = require('./dummy.json')
+Location.insertMany(dummy).then(function(data) {
+  console.log('saved!')
+}).catch(function(err) {
+  console.log(err)
+})
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
