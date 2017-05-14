@@ -152,5 +152,15 @@ $(document).on('click', '.esri-search__submit-button', function() {
     }).done(function(data) {
       console.log('hi')
       console.log(data)
+
+      $('.esri-popup__main-container').empty();
+      $('.esri-popup__main-container').append(`<br>`)
+      $('.esri-popup__main-container').append(`<h5>${data.name}</h5><br>`)
+      $('.esri-popup__main-container').append(`<p>${data.address}</p><br>`)
+      $('.esri-popup__main-container').append(`<p>${data.accessibleFriendly}</p><br>`)
+      $('.esri-popup__main-container').append(`<p>${data.accessibleElevator}</p><br>`)
+      $('.esri-popup__main-container').append(`<p>${data.accessibleRamp}</p><br>`)
+      $('.esri-popup__main-container').append(`<p>${data.accessibleStairs}</p><br>`)
+      $('.esri-popup__main-container').append(`<p>${data.reason}</p><br>`)
     })
 })
