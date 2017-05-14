@@ -28,6 +28,30 @@ db.once("open", () => {
   //User.insertMany([foo, bar], (res) => {
   // console.log(res)
   //})
+  var foo = new Location({
+    name: "Fuck off",
+    street: "River Rd",
+    zip: "07020",
+    city: "Edgewater",
+    country: "USA",
+    accessibleFriendly: false,
+    reason: "No clue"
+  })
+
+  var bar = new Location({
+    name: "Fuck off",
+    street: "River Rd",
+    zip: "07020",
+    city: "Edgewater",
+    country: "USA",
+    accessibleFriendly: false,
+    reason: "No clue"
+  })
+
+  Location.insertMany([foo, bar], (res) => {
+    console.log(res)
+  })
+
 });
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
