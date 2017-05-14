@@ -1,6 +1,5 @@
 var express = require('express');
 var https = require('https');
-var request = require("request")
 
 module.exports = (function() {
   'use strict';
@@ -12,16 +11,8 @@ module.exports = (function() {
   let tText = req.query.text;
   handleWebhook(req.query, res);
 
-  request('https://vast-ridge-24155.herokuapp.com/location/484 hillcrest rd. new york, ny', function (error, response, body) {
-   console.log('body:', body); // Print the HTML for the Google homepage. 
+  let monkey = "`${tText}` This location is Accessable! :D"
 
-  });
-
-  if (body.accessibleFriendly){
-  var monkey = "This location is Accessable"
-} else {
-  var monkey = "This location is not accessable"
-}
   var data = JSON.stringify({
    api_key: 'c492b266',
    api_secret: '9bc16bd976d0f158',
