@@ -2,13 +2,14 @@ const express = require('express');
 const exphbs  = require('express-handlebars');
 const path = require('path');
 const app = express();
-var router = express.Router();
+const router = express.Router();
 const PORT = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 const db = mongoose.connection;
 const Location = require('./models/Location.js');
 const User = require('./models/User.js');
+const sms = require('./controller/sms');
 
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI);
@@ -41,11 +42,10 @@ app.get('/form', (req, res) => {
   res.render('form')
 })
 
-var sms = require('./controller/sms');
 
 app.use('/sms', sms);
 
-app.listen(PORT, function(){
+app.listen(PORT, () => { 
     console.log(PORT)
 });
 

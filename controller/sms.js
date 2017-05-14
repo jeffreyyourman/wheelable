@@ -5,7 +5,7 @@ module.exports = (function() {
     'use strict';
     var router = express.Router();
 
-    router.get('/recieve', function(req, res) {
+    router.get('/receive', function(req, res) {
 
     let tNumber = req.query.msisdn;
     let tText = req.query.text;
