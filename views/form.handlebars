@@ -1,11 +1,11 @@
-  <form class="" action="/companyInfo" method="post">
+<form class="" action="/companyInfo" method="post">
   <div class="form-group">
     <label for="usr">Name of destination:</label>
-    <input placeholder='Business: Club, Bar, restaurant, etc' type="text" class="form-control" id="usr">
+    <input placeholder='Business: Club, Bar, restaurant, etc' type="text" name='name'  class="form-control" id="usr">
   </div>
   <div class="form-group">
     <label for="usr">Address:</label>
-    <input placeholder='company address' type="text" class="form-control" id="usr">
+    <input placeholder='company address' type="text" name='address'  class="form-control" id="usr">
   </div>
   <div class="accessibility">
     <div class="radio accessible ">
@@ -30,7 +30,7 @@
   </div>
   <div class="form-group">
     <label for="usr">Reason:</label>
-    <textarea placeholder='Why is this company accessible or not accessible' class="form-control" rows="5" id="comment"></textarea>
+    <textarea placeholder='Why is this company accessible or not accessible' class="form-control" name='reason' rows="5" id="comment"></textarea>
   </div>
   <input type="submit" class="btn btn-info submitBtn" value="Submit">
 </form>

@@ -14,7 +14,6 @@ var UniqueID = PubNub.generateUUID();
         } else {
           console.log('flower.');
         }
-
       }
   })
   pubnubDemo.subscribe({
@@ -155,4 +154,3 @@ $(document).on('click', '.esri-search__submit-button', function() {
       console.log(data)
     })
 })
-
