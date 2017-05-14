@@ -50,9 +50,10 @@ app.get('/location/:address', (req, res) => {
 
     if (!data) {
       res.json(null)
+    } else {
+      res.json(data)
     }
 
-    res.json(data)
     });
 })
 
