@@ -68,9 +68,12 @@ app.get('/form', (req, res) => {
   res.render('form')
 })
 
+app.get('/map', (req, res) => {
+  res.render('map')
+})
+
 app.use('/sms', sms);
 
-app.listen(PORT, () => { 
+app.listen(PORT, () => {
     console.log(PORT)
 });
-
