@@ -54,7 +54,7 @@ var map = new Map({
 var trailsLayer = new FeatureLayer({
   url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0",
 });
-//map.add(trailsLayer); // Optionally add layer to map
+map.add(trailsLayer); // Optionally add layer to map
 var view = new MapView({
   container: "viewDiv",
   map: map,
