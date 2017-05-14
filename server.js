@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 const router = express.Router();
 const PORT = process.env.PORT || 3000;
+const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
 const db = mongoose.connection;
@@ -23,49 +24,49 @@ db.on("error", (error) => {
 
 db.once("open", () => {
   console.log(`Mongoose connection successful.`);
-  //var foo = new User({name: "Craig"})
-  //var bar = new User({name: "Jon"})
-  //User.insertMany([foo, bar], (res) => {
-  // console.log(res)
+  //var foo = new Location({
+  //  name: "Fuck off",
+  //  address: "840 River Rd, Edgewater NJ",
+  //  accessibleFriendly: false,
+  //  reason: "No clue"
   //})
-  var foo = new Location({
-    name: "Fuck off",
-    street: "River Rd",
-    zip: "07020",
-    city: "Edgewater",
-    country: "USA",
-    accessibleFriendly: false,
-    reason: "No clue"
-  })
 
-  var bar = new Location({
-    name: "Fuck off",
-    street: "River Rd",
-    zip: "07020",
-    city: "Edgewater",
-    country: "USA",
-    accessibleFriendly: false,
-    reason: "No clue"
-  })
+  //var bar = new Location({
+  //  name: "Fuck off",
+  //  address: "840 River Rd, Edgewater NJ",
+  //  accessibleFriendly: false,
+  //  reason: "No clue"
+  //})
 
-  Location.insertMany([foo, bar], (res) => {
-    console.log(res)
-  })
+  //Location.insertMany([foo, bar], (res) => {
+  //  console.log(res)
+  //})
 
 });
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname,'public')));
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
     res.render('home', {foo: 'Hi'});
 });
 
+app.get('/location/:address', (req, res) => {
+  const address = req.params.address;
+  console.log('address', address)
+
+  Location.findOne({ 'address': address }, (err, data) => {
+    if (err) return handleError(err);
+    res.render('map', data);
+  })
+})
+
 app.get('/form', (req, res) => {
   res.render('form')
 })
-
 
 app.use('/sms', sms);
 
