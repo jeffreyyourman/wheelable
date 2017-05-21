@@ -20,7 +20,11 @@ var UniqueID = PubNub.generateUUID();
   pubnubDemo.subscribe({
       channels: ['esri_geocode_input']
   });
+
+
+
   var address = window.location.pathname.split('/')[2]
+  console.log(address)
   if (address == undefined) {
     address = "299 South St, New York, NY 10002";
   }  else {
@@ -48,8 +52,13 @@ require([
 "dojo/domReady!"
 ], function(Map, MapView, Search, FeatureLayer, Graphic, GraphicsLayer, Point, SimpleMarkerSymbol) {
 var map = new Map({
+  smartNavigation: false,
   basemap: "dark-gray-vector"
 });
+
+  map.on("load", function() {
+    console.log('')
+  });
 // Add the layer to the map
 var trailsLayer = new FeatureLayer({
   url: "https://services3.arcgis.com/GVgbJbqm8hXASVYi/arcgis/rest/services/Trailheads/FeatureServer/0",
@@ -70,16 +79,16 @@ var search = new Search({
 search.defaultSource.withinViewEnabled = true; // Limit search to visible map area only
 view.ui.add(search, "top-right"); // Add to the map
 // Add the trailheads as a search source
-search.sources.push({
-  featureLayer: trailsLayer,
-  searchFields: ["TRL_NAME"],
-  displayField: "TRL_NAME",
-  exactMatch: false,
-  outFields: ["TRL_NAME", "PARK_NAME"],
-  resultGraphicEnabled: true,
-  name: "Trailheads",
-  placeholder: "Santa",
-});
+// search.sources.push({
+//   featureLayer: trailsLayer,
+//   searchFields: ["TRL_NAME"],
+//   displayField: "TRL_NAME",
+//   exactMatch: false,
+//   outFields: ["TRL_NAME", "PARK_NAME"],
+//   resultGraphicEnabled: true,
+//   name: "Trailheads",
+//   placeholder: "Santa",
+// });
 // Find address
 function showPopup(address, pt) {
   view.popup.open({
@@ -88,20 +97,20 @@ function showPopup(address, pt) {
     location: pt
   });
 }
-view.on("click", function(evt){
-  search.clear();
-  view.popup.clear();
-  var locatorSource = search.defaultSource;
-  locatorSource.locator.locationToAddress(evt.mapPoint)
-    .then(function(response) {
-      var address = response.address.Match_addr;
-      // Show the address found
-      showPopup(address, evt.mapPoint);
-    }, function(err) {
-      // Show no address found
-      showPopup("No address found for this location.", evt.mapPoint);
-    });
-});
+// view.on("click", function(evt){
+//   search.clear();
+//   view.popup.clear();
+//   var locatorSource = search.defaultSource;
+//   locatorSource.locator.locationToAddress(evt.mapPoint)
+//     .then(function(response) {
+//       var address = response.address.Match_addr;
+//       // Show the address found
+//       showPopup(address, evt.mapPoint);
+//     }, function(err) {
+//       // Show no address found
+//       showPopup("No address found for this location.", evt.mapPoint);
+//     });
+// });
 var graphicsLayer = new GraphicsLayer();
       map.add(graphicsLayer);
       /*************************
@@ -126,6 +135,58 @@ var graphicsLayer = new GraphicsLayer();
       graphicsLayer.add(pointGraphic);
 })
 }
+
+
+$(document).keyup('.esri-search__input', function() {
+  // console.log(event.keyCode)
+  if (event.keyCode == 13) {
+    console.log('enter')
+    $('.esri-search__submit-button').click()
+  }else{
+    // console.log('kkkk')
+  }
+  // var querySearch = $('input').val()
+  // console.log(querySearch);
+  // console.log(`${window.location.origin}/location/${querySearch}`)
+  // $.ajax({
+  //   url: `${window.location.origin}/location/${querySearch}`
+  //   }).done(function(data) {
+  //     console.log('hi')
+  //     console.log(data)
+  //     var popupCompany = $('.esri-popup__main-container')
+  //     popupCompany.empty();
+  //     if (data) {
+  //       if (data.accessibleFriendly) {
+  //         popupCompany.append("<h2>This is accessible</h2><br>")
+  //       }
+  //       if (data.accessibleElevator) {
+  //         popupCompany.append("<h3>Elevator Entrance</h3>")
+  //         popupCompany.append('<img src = "/assets/img/elevator.png" style ="height:60px; width:60px">')
+  //       }
+  //       if (data.accessibleRamp) {
+  //         // popupCompany.append(`<p>${data.accessibleRamp}</p><br>`)
+  //         popupCompany.append("<h3>Ramp Entrance</h3>")
+  //         popupCompany.append('<img src = "/assets/img/ramp.png" style ="height:60px; width:60px">')
+  //       }
+  //       if (data.accessibleStairs) {
+  //         // popupCompany.append(`<h3>${data.accessibleStairs}</h3><br>`)
+  //         popupCompany.append("<h3>This has very little stairs</h3>")
+  //         popupCompany.append('<img src = "/assets/img/escalator.png" style ="height:60px; width:60px">')
+  //       }
+  //       if (data.reason) {
+  //         popupCompany.append(`<p>${data.reason}</p><br>`) 
+  //       }
+  //     } else {
+  //       $('.question').html("<p>No Data</p><br>")
+  //       $('.info').html("<p><a href='/form'>Add Info</a></p>")
+
+  //       popupCompany.append('<h2 style = "text-align: center">Entry doesnt exist</h2> </br><h4 style = "text-align: center">Help us by adding details about this location</h4>')
+  //     }
+  //   })
+})
+
+
+
 $(document).on('click', '.esri-search__submit-button', function() {
   var querySearch = $('input').val()
   console.log(querySearch);

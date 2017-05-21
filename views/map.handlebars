@@ -1,13 +1,8 @@
 <style>
-  html, body, #viewDiv {
-    padding: 0;
-    margin: 0;
-    height: 94.5%;
-    width: 100%;
-  }nav{
+nav{
 		background-color: #60AAF1 !important;
   }.hg1{
-  	font-size: 50px;
+  	font-size: 30px;
   	border:solid #60AAF1;
   	height: 100%;
   	width: 30%;
@@ -18,7 +13,7 @@
   color: white;
 
   }.hg2{
-  	font-size: 50px;
+  	font-size: 30px;
   	border:solid white;
   	height: 100%;
   	width: 70%;
@@ -26,20 +21,17 @@
     opacity: 0.8;
     color: darkgrey;
 
-  }footer{
-  	height: 100%;
-  	max-height:200px;
   }
 </style>
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 
-  <a class="navbar-brand" href="#"><img src="/assets/img/logo-1.png" style="width=10%"></a>
+  <a class="navbar-brand" href="/"><img id="lol" src="/assets/img/logo-1.png"></a>
 
 
 </nav>
   <div id="viewDiv"></div>
 
-<footer class="footer">
+<div class="footer">
 <div class="hg1">
 <p class="info"></p>
 </div>
@@ -47,7 +39,7 @@
 <div class="hg2">
 <p class="question"></p>
 </div>
-</footer>
+</div>
 <script type="text/javascript">
         $('.accessibleAdditions').hide()
         $('#accessibleradio').on('click', function(event) {

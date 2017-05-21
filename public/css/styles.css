@@ -1,7 +1,14 @@
+  html, body, #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 94.5%;
+    width: 100%;
+  }
 .blue {
 	font-size: 17px;
 	font-style: Arial, Helvetica, sans-serif;
 }
+
 
 .center{
 	display: block;
@@ -79,4 +86,78 @@
   padding:40px;
   border-radius: 45px;
   margin-top: 45px;
+}
+
+
+@media screen and (min-width: 770px) {
+  .blue {
+    font-size: 17px;
+    font-style: Arial, Helvetica, sans-serif;
+  }
+
+  .center{
+    display: block;
+    margin: auto;
+    padding-top: 8%;
+    width: 35%;
+  }
+
+  #sub-title{
+    text-align: center;
+    color: white;
+    opacity: 0.5;
+  }
+
+  #sub-question{
+    padding-top: 35%;
+    text-align: center;
+    color: #2B71E8;
+    font-size: 60px;
+  }
+
+  #sub-question1{
+    text-align: center;
+    color: #2B71E8;
+    font-size: 60px;
+  }
+
+  #button-main1{
+    display: block;
+    margin: auto;
+    margin-top: 9%;
+/*    padding-top: 32px;
+    padding-bottom: 32px;*/
+    border-radius: 45px;
+    width: 25%;
+    font-size: 30px;
+  }
+
+    #button-main2{
+    display: block;
+    margin: auto;
+/*    padding-top: 32px;
+    padding-bottom: 32px;*/
+    border-radius: 45px;
+    width: 25%;
+    font-size: 30px;
+    background-color: transparent;
+    border-color: transparent;
+  }.footer{
+    height: 40%;
+  }  
+  html, body, #viewDiv {
+    padding: 0;
+    margin: 0;
+    height: 90%;
+    width: 100%;
+  }nav{
+    height: 10%;
+  }#lol{
+    width: 50%;
+  }
+  .footer{
+    height: 23.5%;
+/*    max-height:200px;*/
+  }
+
 }
