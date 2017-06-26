@@ -9,9 +9,9 @@ var UniqueID = PubNub.generateUUID();
         console.log('message', message.message.uniqueid)
         console.log('UniqueID', UniqueID)
         if (UniqueID === message.message.uniqueid) {
-          let { Place_addr } = message.message.geocode.candidates[0].attributes;
-          let { x, y } = message.message.geocode.candidates[0].location;
-          mapFunctionDisplay(x, y, Place_addr)
+          // let { Place_addr } = message.message.geocode.candidates[0].attributes;
+          // let { x, y } = 0,0
+          mapFunctionDisplay()
         } else {
           console.log('flower.');
         }
@@ -68,9 +68,9 @@ map.add(trailsLayer); // Optionally add layer to map
 
 var view = new MapView({
   container: "viewDiv",
+  center: [-98.35, 39.50],
   map: map,
-  center: [x, y],
-  zoom: 9
+  zoom: 3
 });
 // Search
 var search = new Search({
@@ -118,8 +118,7 @@ var graphicsLayer = new GraphicsLayer();
        *************************/
       // London
       var point = new Point({
-          x: x,
-          y: y
+
         }),
         markerSymbol = new SimpleMarkerSymbol({
           color: [226, 119, 40],
@@ -129,7 +128,7 @@ var graphicsLayer = new GraphicsLayer();
           }
         });
       var pointGraphic = new Graphic({
-        geometry: point,
+
         symbol: markerSymbol
       });
       graphicsLayer.add(pointGraphic);
